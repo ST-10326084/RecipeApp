@@ -1,14 +1,15 @@
 ﻿using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using RecipeApp;
 
 namespace RecipeApp
 {
-    public partial class ClearRecipeWindow : Window
+    public partial class ClearRecipePage : Page
     {
         private RecipeBook recipeBook;
 
-        public ClearRecipeWindow(RecipeBook book)
+        public ClearRecipePage(RecipeBook book)
         {
             InitializeComponent();
             recipeBook = book;

@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace RecipeApp
 {
-    public partial class ScaleRecipeWindow : Window
+    public partial class ScaleRecipePage : Page
     {
         private RecipeBook recipeBook;
 
-        public ScaleRecipeWindow(RecipeBook book)
+        public ScaleRecipePage(RecipeBook book)
         {
             InitializeComponent();
             recipeBook = book;

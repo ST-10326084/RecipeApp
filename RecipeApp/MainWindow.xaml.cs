@@ -27,26 +27,22 @@ namespace RecipeApp
 
         private void AddRecipe_Click(object sender, RoutedEventArgs e)
         {
-            var addRecipeWindow = new AddRecipeWindow(recipeBook);
-            addRecipeWindow.Show();
+            MainFrame.NavigationService.Navigate(new AddRecipePage(recipeBook)); // need recipeBook inside of each of them right?
         }
 
         private void DisplayRecipe_Click(object sender, RoutedEventArgs e)
         {
-            var displayRecipeWindow = new DisplayRecipeWindow(recipeBook);
-            displayRecipeWindow.Show();
-        }
-
-        private void ScaleRecipe_Click(object sender, RoutedEventArgs e)
-        {
-            var scaleRecipeWindow = new ScaleRecipeWindow(recipeBook);
-            scaleRecipeWindow.Show();
+            MainFrame.NavigationService.Navigate(new DisplayRecipePage(recipeBook));
         }
 
         private void ClearRecipe_Click(object sender, RoutedEventArgs e)
         {
-            var clearRecipeWindow = new ClearRecipeWindow(recipeBook);
-            clearRecipeWindow.Show();
+            MainFrame.NavigationService.Navigate(new ClearRecipePage(recipeBook));
+        }
+
+        private void ScaleRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new ScaleRecipePage(recipeBook));
         }
     }
 }
