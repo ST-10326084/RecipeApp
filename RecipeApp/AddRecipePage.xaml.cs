@@ -14,15 +14,35 @@ namespace RecipeApp
             InitializeComponent();
             recipeBook = book;
             newRecipe = new Recipe(string.Empty);
+
+            // Populate Ingredient Name and Food Group ComboBoxes
+            PopulateComboBoxes();
+        }
+
+        private void PopulateComboBoxes()
+        {
+            var allIngredients = recipeBook.GetAllIngredients();
+            var uniqueIngredients = new HashSet<string>(allIngredients.Select(i => i.Name));
+            var allFoodGroups = recipeBook.GetAllFoodGroups();
+
+            foreach (var ingredient in uniqueIngredients)
+            {
+                IngredientNameComboBox.Items.Add(ingredient);
+            }
+
+            foreach (var foodGroup in allFoodGroups)
+            {
+                FoodGroupsComboBox.Items.Add(foodGroup);
+            }
         }
 
         private void AddIngredient_Click(object sender, RoutedEventArgs e)
         {
-            string ingredientName = IngredientNameTextBox.Text.Trim();
+            string ingredientName = IngredientNameComboBox.Text.Trim();
             double quantity = double.Parse(QuantityTextBox.Text.Trim());
             string unitOfMeasure = UnitOfMeasureTextBox.Text.Trim();
             double calories = double.Parse(CaloriesTextBox.Text.Trim());
-            string foodGroup = ((ComboBoxItem)FoodGroupsComboBox.SelectedItem)?.Content.ToString();
+            string foodGroup = FoodGroupsComboBox.SelectedItem?.ToString();
 
             // Create new Ingredient object and add to ListBox
             Ingredient ingredient = new Ingredient(ingredientName, quantity, unitOfMeasure, calories, foodGroup);
@@ -30,7 +50,7 @@ namespace RecipeApp
             IngredientsListBox.Items.Add($"{ingredientName} - {quantity} {unitOfMeasure} - {calories} - {foodGroup}");
 
             // Clear input fields
-            IngredientNameTextBox.Clear();
+            IngredientNameComboBox.SelectedIndex = -1;
             QuantityTextBox.Clear();
             UnitOfMeasureTextBox.Clear();
             CaloriesTextBox.Clear();
@@ -44,22 +64,17 @@ namespace RecipeApp
             StepTextBox.Clear();
         }
 
-        private void SaveRecipe_Click(object sender, RoutedEventArgs e) // needs to handle if something was left blank
+        private void SaveRecipe_Click(object sender, RoutedEventArgs e)
         {
             newRecipe.Name = RecipeNameTextBox.Text;
 
-            // Add steps to recipe
             foreach (string step in StepsListBox.Items)
             {
                 newRecipe.Steps.Add(step);
             }
 
-            // Add newRecipe to recipeBook
             recipeBook.GetRecipes().Add(newRecipe);
-
             MessageBox.Show("Recipe added successfully!");
-
-            
         }
     }
 }

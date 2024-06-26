@@ -7,38 +7,28 @@
             <TextBlock Text="Recipe Name:"/>
             <TextBox x:Name="RecipeNameTextBox" Margin="0 0 0 10"/>
 
-            <TextBlock Text="Ingredients:"/>
-            <StackPanel Margin="0 0 0 10">
-                <TextBlock Text="Ingredient Name:"/>
-                <TextBox x:Name="IngredientNameTextBox"/>
+            <TextBlock Text="Ingredients:" Margin="0 10 0 10"/>
+            
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Ingredient" TextAlignment="Center" Width="150" Margin="0 0 10 0"/>
+                <TextBlock Text="Quantity" TextAlignment="Center" Width="100" Margin="0 0 10 0"/>
+                <TextBlock Text="Unit of Measure" TextAlignment="Center" Width="100" Margin="0 0 10 0"/>
+                <TextBlock Text="Calories" TextAlignment="Center" Width="100" Margin="0 0 10 0"/>
+                <TextBlock Text="Food Group" Width="150" Margin="0 0 10 0"/>
             </StackPanel>
-            <StackPanel Margin="0 0 0 10">
-                <TextBlock Text="Quantity:"/>
-                <TextBox x:Name="QuantityTextBox"/>
+            
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <ComboBox x:Name="IngredientNameComboBox" Width="150" Margin="0 0 10 0"/>
+                <TextBox x:Name="QuantityTextBox" Width="100" Margin="0 0 10 0"/>
+                <TextBox x:Name="UnitOfMeasureTextBox" Width="100" Margin="0 0 10 0"/>
+                <TextBox x:Name="CaloriesTextBox" Width="100" Margin="0 0 10 0"/>
+                <ComboBox x:Name="FoodGroupsComboBox" Width="150" Margin="0 0 10 0"/>
+                <Button Content="Add Ingredient" Click="AddIngredient_Click"/>
             </StackPanel>
-            <StackPanel Margin="0 0 0 10">
-                <TextBlock Text="Unit of Measure:"/>
-                <TextBox x:Name="UnitOfMeasureTextBox"/>
-            </StackPanel>
-            <StackPanel Margin="0 0 0 10">
-                <TextBlock Text="Calories:"/>
-                <TextBox x:Name="CaloriesTextBox"/>
-            </StackPanel>
-
-            <ComboBox x:Name="FoodGroupsComboBox" Margin="0 0 0 10">
-                <ComboBoxItem>Fruits</ComboBoxItem>
-                <ComboBoxItem>Vegetables</ComboBoxItem>
-                <ComboBoxItem>Grains</ComboBoxItem>
-                <ComboBoxItem>Protein</ComboBoxItem>
-                <ComboBoxItem>Dairy</ComboBoxItem>
-                <!-- Add more food groups as needed -->
-            </ComboBox>
-
-            <Button Content="Add Ingredient" Click="AddIngredient_Click" Margin="0 10 0 0"/>
 
             <ListBox x:Name="IngredientsListBox" Height="100" Margin="0 0 0 10"/>
 
-            <TextBlock Text="Steps:"/>
+            <TextBlock Text="Steps:" Margin="0 10 0 10"/>
             <TextBox x:Name="StepTextBox" Margin="0 0 0 10"/>
             <Button Content="Add Step" Click="AddStep_Click"/>
 
