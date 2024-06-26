@@ -5,15 +5,42 @@
     <Grid>
         <StackPanel Margin="10">
             <TextBlock Text="Recipe Name:"/>
-            <TextBox Name="RecipeNameTextBox" Margin="0 0 0 10"/>
+            <TextBox x:Name="RecipeNameTextBox" Margin="0 0 0 10"/>
 
             <TextBlock Text="Ingredients:"/>
-            <Button Content="Add Ingredient" Click="AddIngredient_Click" Margin="0 0 0 10"/>
-            <ListBox Name="IngredientsListBox" Height="100" Margin="0 0 0 10"/>
+            <StackPanel Margin="0 0 0 10">
+                <TextBlock Text="Ingredient Name:"/>
+                <TextBox x:Name="IngredientNameTextBox"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 10">
+                <TextBlock Text="Quantity:"/>
+                <TextBox x:Name="QuantityTextBox"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 10">
+                <TextBlock Text="Unit of Measure:"/>
+                <TextBox x:Name="UnitOfMeasureTextBox"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 10">
+                <TextBlock Text="Calories:"/>
+                <TextBox x:Name="CaloriesTextBox"/>
+            </StackPanel>
+
+            <ComboBox x:Name="FoodGroupsComboBox" Margin="0 0 0 10">
+                <ComboBoxItem Content="Vegetables"/>
+                <ComboBoxItem Content="Fruits"/>
+                <ComboBoxItem Content="Grains"/>
+                <!-- Add more food groups as needed -->
+            </ComboBox>
+
+            <Button Content="Add Ingredient" Click="AddIngredient_Click" Margin="0 10 0 0"/>
+
+            <ListBox x:Name="IngredientsListBox" Height="100" Margin="0 0 0 10"/>
 
             <TextBlock Text="Steps:"/>
-            <Button Content="Add Step" Click="AddStep_Click" Margin="0 0 0 10"/>
-            <ListBox Name="StepsListBox" Height="100" Margin="0 0 0 10"/>
+            <TextBox x:Name="StepTextBox" Margin="0 0 0 10"/>
+            <Button Content="Add Step" Click="AddStep_Click"/>
+
+            <ListBox x:Name="StepsListBox" Height="100" Margin="0 0 0 10"/>
 
             <Button Content="Save Recipe" Click="SaveRecipe_Click" Margin="0 10 0 0"/>
         </StackPanel>
