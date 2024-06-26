@@ -6,6 +6,9 @@
         <StackPanel Margin="10">
             <TextBlock Text="Select a Recipe:"/>
             <ComboBox Name="RecipeComboBox" SelectionChanged="RecipeComboBox_SelectionChanged" Margin="0 0 0 10"/>
+            
+            <Button Content="Filter Recipe" Click="FilterButton_Click" Margin="0 0 0 10"/>
+
             <TextBlock Text="Ingredients:"/>
             <ListBox Name="IngredientsListBox" Height="100" Margin="0 0 0 10"/>
             <TextBlock Text="Steps:"/>

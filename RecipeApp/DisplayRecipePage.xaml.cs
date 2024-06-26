@@ -24,7 +24,22 @@ namespace RecipeApp
                 return;
             }
 
-            var selectedRecipe = recipeBook.GetRecipes().FirstOrDefault(r => r.Name == selectedRecipeName);
+            DisplayRecipe(selectedRecipeName);
+        }
+
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new FilterPage(recipeBook, this));
+        }
+
+        public void UpdateRecipeList(IEnumerable<Recipe> filteredRecipes)
+        {
+            RecipeComboBox.ItemsSource = filteredRecipes.Select(r => r.Name);
+        }
+
+        private void DisplayRecipe(string recipeName)
+        {
+            var selectedRecipe = recipeBook.GetRecipes().FirstOrDefault(r => r.Name == recipeName);
 
             if (selectedRecipe != null)
             {
@@ -40,4 +55,3 @@ namespace RecipeApp
         }
     }
 }
-// working niw

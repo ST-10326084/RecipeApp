@@ -1,0 +1,31 @@
+﻿<Page x:Class="RecipeApp.FilterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Filter Recipes">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Filters:" FontWeight="Bold" Margin="0 10 0 0"/>
+
+            <!-- Ingredient Filter -->
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Ingredient:" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                <ComboBox Name="IngredientFilterComboBox" Width="150" Margin="0 0 10 0"/>
+            </StackPanel>
+
+            <!-- Food Group Filter -->
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Food Group:" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                <ComboBox Name="FoodGroupFilterComboBox" Width="150" Margin="0 0 10 0"/>
+            </StackPanel>
+
+            <!-- Max Calories Filter -->
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Max Calories:" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                <TextBox Name="MaxCaloriesFilterTextBox" Width="50" Margin="0 0 10 0"/>
+            </StackPanel>
+
+            <!-- Apply Filters Button -->
+            <Button Content="Apply Filters" Click="ApplyFiltersButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -51,7 +51,47 @@ namespace RecipeApp
                 caesarSalad.Steps.Add("Serve chilled.");
 
                 recipes.Add(caesarSalad);
+
+                // Third Recipe: Chicken Stir Fry
+                var chickenStirFry = new Recipe("Chicken Stir Fry");
+
+                chickenStirFry.AddIngredient(new Ingredient("Chicken Breast", 300, "grams", 250, "Proteins"));
+                chickenStirFry.AddIngredient(new Ingredient("Broccoli", 150, "grams", 50, "Vegetables"));
+                chickenStirFry.AddIngredient(new Ingredient("Bell Pepper", 100, "grams", 30, "Vegetables"));
+                chickenStirFry.AddIngredient(new Ingredient("Soy Sauce", 30, "ml", 15, "Condiments"));
+
+                chickenStirFry.Steps.Add("Slice chicken breast into strips and cook in a wok.");
+                chickenStirFry.Steps.Add("Add broccoli and bell pepper, stir-fry until tender-crisp.");
+                chickenStirFry.Steps.Add("Season with soy sauce and serve hot.");
+
+                recipes.Add(chickenStirFry);
+
+                // Fourth Recipe: Fruit Smoothie
+                var fruitSmoothie = new Recipe("Fruit Smoothie");
+
+                fruitSmoothie.AddIngredient(new Ingredient("Banana", 1, "piece", 100, "Fruits"));
+                fruitSmoothie.AddIngredient(new Ingredient("Strawberries", 100, "grams", 50, "Fruits"));
+                fruitSmoothie.AddIngredient(new Ingredient("Greek Yogurt", 150, "grams", 100, "Dairy"));
+
+                fruitSmoothie.Steps.Add("Blend banana, strawberries, and Greek yogurt until smooth.");
+                fruitSmoothie.Steps.Add("Pour into a glass and serve immediately.");
+
+                recipes.Add(fruitSmoothie);
+
+                // Fifth Recipe: Oatmeal Cookies
+                var oatmealCookies = new Recipe("Oatmeal Cookies");
+
+                oatmealCookies.AddIngredient(new Ingredient("Rolled Oats", 200, "grams", 300, "Grains"));
+                oatmealCookies.AddIngredient(new Ingredient("Butter", 150, "grams", 600, "Fats"));
+                oatmealCookies.AddIngredient(new Ingredient("Brown Sugar", 100, "grams", 400, "Sugars"));
+
+                oatmealCookies.Steps.Add("Cream together butter and brown sugar.");
+                oatmealCookies.Steps.Add("Mix in rolled oats until combined.");
+                oatmealCookies.Steps.Add("Spoon dough onto baking sheet and bake at 350°F for 10-12 minutes.");
+
+                recipes.Add(oatmealCookies);
             }
+    
 
             public List<Recipe> GetRecipes()
             {
@@ -216,6 +256,36 @@ namespace RecipeApp
                     selectedRecipe.Scale(scaleFactor); // Scale with given factor
                     Console.WriteLine($"Recipe '{selectedRecipe.Name}' has been scaled by a factor of {scaleFactor}.");
                 }
+            }
+
+            public List<Ingredient> GetAllIngredients()
+            {
+                List<Ingredient> allIngredients = new List<Ingredient>();
+
+                foreach (var recipe in recipes)
+                {
+                    allIngredients.AddRange(recipe.Ingredients);
+                }
+
+                return allIngredients;
+            }
+
+            public List<string> GetAllFoodGroups()
+            {
+                List<string> allFoodGroups = new List<string>();
+
+                foreach (var recipe in recipes)
+                {
+                    foreach (var ingredient in recipe.Ingredients)
+                    {
+                        if (!allFoodGroups.Contains(ingredient.FoodGroup, StringComparer.OrdinalIgnoreCase))
+                        {
+                            allFoodGroups.Add(ingredient.FoodGroup);
+                        }
+                    }
+                }
+
+                return allFoodGroups;
             }
 
             private void ClearRecipe()

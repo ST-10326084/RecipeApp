@@ -26,9 +26,11 @@
             </StackPanel>
 
             <ComboBox x:Name="FoodGroupsComboBox" Margin="0 0 0 10">
-                <ComboBoxItem Content="Vegetables"/>
-                <ComboBoxItem Content="Fruits"/>
-                <ComboBoxItem Content="Grains"/>
+                <ComboBoxItem>Fruits</ComboBoxItem>
+                <ComboBoxItem>Vegetables</ComboBoxItem>
+                <ComboBoxItem>Grains</ComboBoxItem>
+                <ComboBoxItem>Protein</ComboBoxItem>
+                <ComboBoxItem>Dairy</ComboBoxItem>
                 <!-- Add more food groups as needed -->
             </ComboBox>
 
