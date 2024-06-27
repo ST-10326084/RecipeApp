@@ -2,57 +2,74 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Add Recipe"
-      Background="#F9F9F9">
+      Background="WhiteSmoke">
     <Grid>
         <StackPanel Margin="20">
             <TextBlock Text="Add New Recipe" 
                        FontSize="24" 
-                       FontWeight="Bold" 
-                       Margin="0 0 0 20" 
-                       HorizontalAlignment="Center"/>
+                       FontWeight="Bold"                       
+                       Margin="0 0 20 0" 
+                       HorizontalAlignment="Left"/>
 
-            <GroupBox Header="Recipe Details" Margin="0 0 0 20">
+            <GroupBox Header="Recipe Details" Margin="0 0 20 0" Background="White">
                 <StackPanel Margin="10">
                     <TextBlock Text="Recipe Name:" 
                                FontSize="14" 
-                               FontWeight="SemiBold" 
+                               FontWeight="Bold" 
                                Margin="0 0 5 5"/>
-                    <TextBox x:Name="RecipeNameTextBox" Margin="0 0 0 10" Padding="5"/>
+                    <TextBox x:Name="RecipeNameTextBox" Margin="0 0 0 10" Padding="5" BorderBrush="Black"/>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Ingredients" Margin="0 0 0 20">
+            <GroupBox Header="Ingredients" Margin="0 0 20 0" Background="White" FontSize="14" FontStyle="Normal">
                 <StackPanel Margin="10">
                     <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
-                        <TextBlock Text="Ingredient" TextAlignment="Center" Width="150" Margin="0 0 10 0"/>
-                        <TextBlock Text="Quantity" TextAlignment="Center" Width="100" Margin="0 0 10 0"/>
-                        <TextBlock Text="Unit of Measure" TextAlignment="Center" Width="100" Margin="0 0 10 0"/>
-                        <TextBlock Text="Calories" TextAlignment="Center" Width="100" Margin="0 0 10 0"/>
-                        <TextBlock Text="Food Group" Width="150" Margin="0 0 10 0"/>
+                        <TextBlock Text="Ingredient" Width="100" Margin="15 10 0 0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="Quantity" Width="75" Margin="50 10 0 0" HorizontalAlignment="Center" FontWeight="Bold" />
+                        <TextBlock Text="Unit of Measure" Width="110" Margin="10 10 0 0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="Calories" Width="100" Margin="15 10 0 0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="Food Group" Width="150" Margin="0 10 0 0" HorizontalAlignment="Center" FontWeight="Bold"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
-                        <ComboBox x:Name="IngredientNameComboBox" Width="150" Margin="0 0 10 0" Padding="5"/>
-                        <TextBox x:Name="QuantityTextBox" Width="100" Margin="0 0 10 0" Padding="5"/>
-                        <TextBox x:Name="UnitOfMeasureTextBox" Width="100" Margin="0 0 10 0" Padding="5"/>
-                        <TextBox x:Name="CaloriesTextBox" Width="100" Margin="0 0 10 0" Padding="5"/>
-                        <ComboBox x:Name="FoodGroupsComboBox" Width="150" Margin="0 0 10 0" Padding="5"/>
-                        <Button Content="Add Ingredient" Click="AddIngredient_Click" Margin="0 0 0 10" Padding="5"/>
+                        <ComboBox x:Name="IngredientNameComboBox" Width="150" Margin="0 10 0 0" Padding="5" BorderBrush="Black"/>
+                        <TextBox x:Name="QuantityTextBox" Width="100" Margin="0 10 0 0" Padding="5" BorderBrush="Black"/>
+                        <TextBox x:Name="UnitOfMeasureTextBox" Width="100" Margin="0 10 0 0" Padding="5" BorderBrush="Black"/>
+                        <TextBox x:Name="CaloriesTextBox" Width="100" Margin="0 10 0 0" Padding="5" BorderBrush="Black"/>
+                        <ComboBox x:Name="FoodGroupsComboBox" Width="150" Margin="0 10 0 0" Padding="5" BorderBrush="Black"/>
+                        <Border Background="LightGray"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Height="28"
+                            Width="100"
+                            Padding="0"
+                            Margin="20 0 10 0" >
+                          <Button Content="Add Ingredient"
+                                Click="AddIngredient_Click"
+                                Padding="0"
+                                Background="Transparent"
+                                Foreground="Black"
+                                BorderBrush="Transparent"
+                                Height="28"
+                                Width="100"/>
+                        </Border>
+                       
                     </StackPanel>
 
-                    <ListBox x:Name="IngredientsListBox" Height="100" Margin="0 0 10 0" BorderBrush="#CCC" BorderThickness="1"/>
+                    <ListBox x:Name="IngredientsListBox" Height="100" Margin="0 0 10 0" BorderBrush="Black" BorderThickness="1"/>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Steps" Margin="0 0 0 20">
+            <GroupBox Header="Steps" Margin="0 0 20 0" Background="White">
                 <StackPanel Margin="10">
-                    <TextBox x:Name="StepTextBox" Margin="0 0 10 0" Padding="5"/>
-                    <Button Content="Add Step" Click="AddStep_Click" Padding="5"/>
-                    <ListBox x:Name="StepsListBox" Height="100" Margin="0 0 10 0" BorderBrush="#CCC" BorderThickness="1"/>
+                    <TextBox x:Name="StepTextBox" Margin="0 0 10 0" Padding="5" BorderBrush="Black"/>
+                    <Button Content="Add Step" Click="AddStep_Click" Padding="5" Margin="0 0 10 0" Background="LightGray" Foreground="Black"/>
+                    <ListBox x:Name="StepsListBox" Height="100" Margin="0 0 10 0" BorderBrush="Black" BorderThickness="1"/>
                 </StackPanel>
             </GroupBox>
 
-            <Button Content="Save Recipe" Click="SaveRecipe_Click" Margin="0 10 0 0" Padding="10" Background="#4CAF50" Foreground="White"/>
+            <Button Content="Save Recipe" Click="SaveRecipe_Click" Margin="50 0 75 10" Padding="10" Background="Black" Foreground="White"/>
         </StackPanel>
     </Grid>
 </Page>
