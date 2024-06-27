@@ -44,3 +44,5 @@ Display a Recipe: View a list of all recipes and select one to display its detai
 Adjust the Scale of a Recipe: Scale a recipe by a specified factor (e.g., 0.5 for half, 2 for double). You can also reset the recipe to its original quantities and calories.
 Clear a Specific Recipe: Remove a recipe from the recipe book after a confirmation prompt.
 Exit: Exit the program.
+
+![image](https://github.com/ST-10326084/RecipeApp/assets/127187815/f12a9f05-cf04-46b7-8370-d94721d6b61f)
