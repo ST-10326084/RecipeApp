@@ -46,3 +46,6 @@ Clear a Specific Recipe: Remove a recipe from the recipe book after a confirmati
 Exit: Exit the program.
 
 ![image](https://github.com/ST-10326084/RecipeApp/assets/127187815/f12a9f05-cf04-46b7-8370-d94721d6b61f)
+
+![image](https://github.com/ST-10326084/RecipeApp/assets/127187815/f6fef40d-7318-4f72-9166-3ac35005a655)
+
