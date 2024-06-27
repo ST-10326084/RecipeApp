@@ -79,16 +79,51 @@ namespace RecipeApp
 
         private void AddIngredient_Click(object sender, RoutedEventArgs e)
         {
-            string ingredientName = IngredientNameComboBox.Text.Trim();
-            double quantity = double.Parse(QuantityTextBox.Text.Trim());
-            string unitOfMeasure = UnitOfMeasureTextBox.Text.Trim();
-            double calories = double.Parse(CaloriesTextBox.Text.Trim());
-            string foodGroup = FoodGroupsComboBox.SelectedItem?.ToString();
+            try
+            {
+                string ingredientName = IngredientNameComboBox.Text.Trim();
+                if (string.IsNullOrEmpty(ingredientName))
+                {
+                    MessageBox.Show("Ingredient name cannot be empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
-            // Create new Ingredient object and add to ListBox
-            Ingredient ingredient = new Ingredient(ingredientName, quantity, unitOfMeasure, calories, foodGroup);
-            newRecipe.AddIngredient(ingredient);
-            IngredientsListBox.Items.Add($"{ingredientName} - {quantity} {unitOfMeasure} - {calories} - {foodGroup}");
+                if (!double.TryParse(QuantityTextBox.Text.Trim(), out double quantity))
+                {
+                    MessageBox.Show("Please enter a valid quantity.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                string unitOfMeasure = UnitOfMeasureTextBox.Text.Trim();
+                if (string.IsNullOrEmpty(unitOfMeasure))
+                {
+                    MessageBox.Show("Unit of measure cannot be empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (!double.TryParse(CaloriesTextBox.Text.Trim(), out double calories))
+                {
+                    MessageBox.Show("Please enter a valid calorie value.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                string foodGroup = FoodGroupsComboBox.SelectedItem?.ToString();
+                if (string.IsNullOrEmpty(foodGroup))
+                {
+                    MessageBox.Show("Please select a food group.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                    
+                // Create new Ingredient object and add to ListBox
+                Ingredient ingredient = new Ingredient(ingredientName, quantity, unitOfMeasure, calories, foodGroup);
+                newRecipe.AddIngredient(ingredient);
+                IngredientsListBox.Items.Add($"{ingredientName} - {quantity} {unitOfMeasure} - {calories} - {foodGroup}");
+                MessageBox.Show("Ingredient added successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             // Clear input fields
             IngredientNameComboBox.SelectedIndex = -1;

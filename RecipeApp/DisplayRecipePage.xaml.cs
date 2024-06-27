@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,7 +13,8 @@ namespace RecipeApp
         {
             InitializeComponent();
             recipeBook = book;
-            RecipeComboBox.ItemsSource = recipeBook.GetRecipes().Select(r => r.Name);
+           // RecipeComboBox.ItemsSource = recipeBook.GetRecipes().Select(r => r.Name);
+            DisplaySortedRecipes();
         }
 
         private void RecipeComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -25,6 +27,12 @@ namespace RecipeApp
             }
 
             DisplayRecipe(selectedRecipeName);
+        }
+
+        private void DisplaySortedRecipes()
+        {
+            var sortedRecipes = recipeBook.GetRecipes().OrderBy(r => r.Name).ToList();
+            RecipeComboBox.ItemsSource = sortedRecipes.Select(r => r.Name);
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -43,6 +51,7 @@ namespace RecipeApp
 
             if (selectedRecipe != null)
             {
+
                 IngredientsListBox.ItemsSource = selectedRecipe.Ingredients.Select(i => $"{i.Name} - {i.Quantity} {i.UnitOfMeasure}");
                 StepsListBox.ItemsSource = selectedRecipe.Steps;
                 TotalCaloriesTextBlock.Text = $"Total Calories: {selectedRecipe.CalculateTotalCalories()}";
@@ -53,5 +62,6 @@ namespace RecipeApp
                 }
             }
         }
+
     }
 }
