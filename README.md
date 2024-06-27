@@ -9,7 +9,7 @@ Watch a video of part 1 here: https://youtu.be/04h38jot0Ao
 
 Watch a video of part 2 here: https://youtu.be/Kbjwl-Cvwo4
 
-Watch a video of part 3 here: 
+Watch a video of part 3 here: https://youtu.be/oUiYNwlYNWM
 
 Overview
 The POE Recipe Book Program allows you to:
