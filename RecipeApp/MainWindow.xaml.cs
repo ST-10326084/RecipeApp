@@ -24,10 +24,10 @@ namespace RecipeApp
             recipeBook = new RecipeBook();
             recipeBook.OnHighCalories += message => MessageBox.Show(message);
         }
-
+        // main menu buttons
         private void AddRecipe_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.NavigationService.Navigate(new AddRecipePage(recipeBook)); // need recipeBook inside of each of them right?
+            MainFrame.NavigationService.Navigate(new AddRecipePage(recipeBook)); 
         }
 
         private void DisplayRecipe_Click(object sender, RoutedEventArgs e)

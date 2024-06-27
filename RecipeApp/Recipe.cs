@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecipeApp
 {
-    public class Recipe
+    public class Recipe // all of the old c# code has been left in tact, even though some is not needed. such as console logic
     {
         public string Name { get; set; }
         public List<Ingredient> Ingredients { get; set; }
@@ -74,7 +74,7 @@ namespace RecipeApp
                 AddIngredient(new Ingredient(ingredientName, quantity, unitOfMeasure, calories, foodGroup));
             }
         }
-
+        
         public void GetSteps()
         {
             Console.WriteLine("Enter the number of steps in your recipe:");

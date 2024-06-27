@@ -14,7 +14,7 @@ namespace RecipeApp
             recipeBook = book;
             RecipeComboBox.ItemsSource = recipeBook.GetRecipes().Select(r => r.Name);
         }
-
+        // follows the button to scale on the scalerecipepage. uses my orignak logic for resetting to og values
         private void ScaleRecipe_Click(object sender, RoutedEventArgs e)
         {
             string selectedRecipeName = RecipeComboBox.SelectedItem as string;
