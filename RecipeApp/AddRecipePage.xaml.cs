@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.VisualBasic;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -34,6 +35,46 @@ namespace RecipeApp
             {
                 FoodGroupsComboBox.Items.Add(foodGroup);
             }
+        }
+
+        private void IngredientNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            if (comboBox.SelectedItem != null && comboBox.SelectedItem.ToString() == "<New Ingredient>")
+            {
+                string newIngredient = PromptForNewIngredient("New Ingredient");
+                if (!string.IsNullOrEmpty(newIngredient))
+                {
+                    // Add the new ingredient to ComboBox
+                    IngredientNameComboBox.Items.Insert(IngredientNameComboBox.Items.Count - 1, newIngredient);
+                    IngredientNameComboBox.SelectedItem = newIngredient;
+                }
+            }
+        }
+
+        private void FoodGroupsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            if (comboBox.SelectedItem != null && comboBox.SelectedItem.ToString() == "<New Food Group>")
+            {
+                string newFoodGroup = PromptForNewIngredient("New Food Group");
+                if (!string.IsNullOrEmpty(newFoodGroup))
+                {
+                    // Add the new food group to ComboBox
+                    FoodGroupsComboBox.Items.Insert(FoodGroupsComboBox.Items.Count - 1, newFoodGroup);
+                    FoodGroupsComboBox.SelectedItem = newFoodGroup;
+                }
+            }
+        }
+
+        private string PromptForNewIngredient(string itemToAdd)
+        {
+            string newItem = null;
+            // Show a dialog or input box to prompt the user for a new ingredient or food group
+            // Example using MessageBox, replace with your preferred UI for input
+            newItem = Microsoft.VisualBasic.Interaction.InputBox($"Enter new {itemToAdd}:", $"{itemToAdd} Input", "");
+
+            return newItem;
         }
 
         private void AddIngredient_Click(object sender, RoutedEventArgs e)
@@ -75,6 +116,50 @@ namespace RecipeApp
 
             recipeBook.GetRecipes().Add(newRecipe);
             MessageBox.Show("Recipe added successfully!");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Prompt user to enter new Ingredient or Food Group
+            string newEntry = Interaction.InputBox("Enter new Ingredient or Food Group:", "New Entry");
+
+            if (!string.IsNullOrEmpty(newEntry))
+            {
+                // Determine if it's an ingredient or food group based on context
+                if (IngredientNameComboBox.Items.Contains(newEntry))
+                {
+                    MessageBox.Show("Ingredient already exists.");
+                }
+                else if (FoodGroupsComboBox.Items.Contains(newEntry))
+                {
+                    MessageBox.Show("Food group already exists.");
+                }
+                else
+                {
+                    // Ask user where to add the new entry
+                    bool addToIngredients = AskUserToAddToIngredients();
+
+                    // Add to respective ComboBox based on user choice
+                    if (addToIngredients)
+                    {
+                        IngredientNameComboBox.Items.Add(newEntry);
+                        IngredientNameComboBox.SelectedItem = newEntry;
+                    }
+                    else
+                    {
+                        FoodGroupsComboBox.Items.Add(newEntry);
+                        FoodGroupsComboBox.SelectedItem = newEntry;
+                    }
+                }
+            }
+        }
+
+        private bool AskUserToAddToIngredients()
+        {
+            // Show dialog to ask user where to add the new entry
+            var result = MessageBox.Show("Add to Ingredients?", "Choose Destination", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            return result == MessageBoxResult.Yes;
         }
     }
 }
